@@ -75,6 +75,7 @@ public class Main
    
     public static void main(String a[])
     {
+        Scanner sc=new Scanner(System.in);
         customer c[]=new customer[5];
         c[0]=new customer(1,"anbu","9999955555");
         c[1]=new customer(2,"karthi","1234554321");
@@ -92,7 +93,6 @@ public class Main
         p[4]=new product(5,"lux",99);
         for(int i=0;i<5;i++)
             pro.add(p[i]);
-        
         billdetail bd[]=new billdetail[3];
         HashMap<String,Integer> hp=new HashMap<>();
         hp.put(pro.get(0).name,2);
@@ -100,25 +100,75 @@ public class Main
         hp.put(pro.get(4).name,4);
         bd[0]=new billdetail(1,cus.get(0).id,hp);
         bill.add(bd[0]);
-        for(int i=0;i<bill.size();i++)
+        int ch=0;
+        while(ch!=7)
         {
-            billdetail bds=bill.get(i);
-            System.out.println("Bill_id:"+bds.id);
-            System.out.println("customer_id:"+bds.cus_id);
-            String name="";
-            for(i=0;i<cus.size();i++)
+    System.out.println("1.Customer Details\n2.Enter the customer id\n3.Overall bill\n4.Enter the bill\n5.Product Detail\n6.Get Product Details\n7.Exit");
+            System.out.println("Enter the choice:");
+            ch=sc.nextInt();
+            if(ch==1)
             {
-                if(bds.cus_id==cus.get(i).id)
-                    name=cus.get(i).name;
+                for(int i=0;i<cus.size();i++)
+                {
+                    customer res=cus.get(i);
+                    System.out.println(res.id+"   "+res.name+"   "+res.phone_no);
+                }
             }
-            System.out.println("customer_name: "+name);
-            System.out.println("Total Amount - "+bds.get_price());
-        }
-        
-        for(int i=0;i<cus.size();i++)
-        {
-            customer res=cus.get(i);
-            System.out.println(res.id+" "+res.name+" "+res.phone_no);
+            else if(ch==2)
+            {
+                int cd;
+                System.out.println("Enter the customer id");
+                cd=sc.nextInt();
+                System.out.println("The details of customer id "+cd+" is");
+                for(int i=0;i<cus.size();i++)
+                {
+                    customer res=cus.get(i);
+                    if(res.id==cd)
+                        System.out.println(res.id+"   "+res.name+"   "+res.phone_no);
+                }
+            }
+            else if(ch==3)
+            {
+                
+            }
+            else if(ch==4)
+            {
+                for(int i=0;i<bill.size();i++)
+                {
+                    billdetail bds=bill.get(i);
+                    System.out.println("Bill_id:"+bds.id);
+                    System.out.println("customer_id:"+bds.cus_id);
+                    String name="";
+                    for(i=0;i<cus.size();i++)
+                    {
+                        if(bds.cus_id==cus.get(i).id)
+                            name=cus.get(i).name;
+                    }
+                    System.out.println("customer_name: "+name);
+                    System.out.println("Total Amount - "+bds.get_price());
+                }
+            }
+            else if(ch==5)
+            {
+                for(int i=0;i<pro.size();i++)
+                {
+                    product res=pro.get(i);
+                    System.out.println(res.pro_id+"   "+res.name+"   "+res.price);
+                }
+            }
+            else if(ch==6)
+            {
+                int id;
+                System.out.println("Enter the product id");
+                id=sc.nextInt();
+                System.out.println("The details of Product id "+id+" is");
+                for(int i=0;i<pro.size();i++)
+                {
+                    product res=pro.get(i);
+                    if(id==res.pro_id)
+                        System.out.println(res.pro_id+"   "+res.name+"   "+res.price);
+                }
+            }
         }
         
     }
