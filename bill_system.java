@@ -53,6 +53,8 @@ public class Main
         static float get_price()
         {
             price=0;
+            pro_pri=new HashMap<>();
+            int cc=0;
             for(Map.Entry<String,Integer> e:pro_details.entrySet())
             {
                 pp=0;
@@ -61,6 +63,7 @@ public class Main
                     if(e.getKey().equals(pro.get(i).name))
                     {
                         pp=pro.get(i).price*e.getValue();
+                        System.out.println(++cc+". "+e.getKey()+" "+pp);
                         pro_pri.put(e.getKey(),pp);
                     }
                 }
@@ -109,12 +112,7 @@ public class Main
                     name=cus.get(i).name;
             }
             System.out.println("customer_name: "+name);
-            int cc=0;
-            for(Map.Entry<String,Integer> e:bds.pro_details.entrySet())
-            {
-                System.out.println(++cc+". "+e.getKey()+" "+e.getValue());//+" "+bds.pro_pri.get(e.getKey()));
-            }
-            //System.out.println("Total Amount - "+bds.get_price());
+            System.out.println("Total Amount - "+bds.get_price());
         }
         
         for(int i=0;i<cus.size();i++)
