@@ -123,10 +123,11 @@ public class Main
             ch=sc.nextInt();
             if(ch==1)
             {
+                System.out.println("Customer_id Name Phone_No");
                 for(int i=0;i<cus.size();i++)
                 {
                     customer res=cus.get(i);
-                    System.out.println(res.id+"   "+res.name+"   "+res.phone_no);
+                    System.out.println(res.id+"             "+res.name+"        "+res.phone_no);
                 }
             }
             else if(ch==2)
@@ -135,19 +136,21 @@ public class Main
                 System.out.println("Enter the customer id");
                 cd=sc.nextInt();
                 System.out.println("The details of customer id "+cd+" is");
+                System.out.println("Customer_id Name Phone_No");
                 for(int i=0;i<cus.size();i++)
                 {
                     customer res=cus.get(i);
                     if(res.id==cd)
-                        System.out.println(res.id+"   "+res.name+"   "+res.phone_no);
+                        System.out.println(res.id+"           "+res.name+"      "+res.phone_no);
                 }
             }
             else if(ch==4)
             {
+                System.out.println("Bill_id    Bill_Date   Customer_id  Total_Qty  Amount");
                 for(int i=0;i<perbill.size();i++)
                 {
                     bill res=perbill.get(i);
-                    System.out.println(res.id+"   "+res.date+"   "+res.cus_id+"   "+res.tot_qty+"   "+res.amt);
+                    System.out.println(res.id+"       "+res.date+"      "+res.cus_id+"         "+res.tot_qty+"       "+res.amt);
                 }
             }
             else if(ch==3)
@@ -169,10 +172,11 @@ public class Main
             }
             else if(ch==5)
             {
+                System.out.println("Product_id    Name   Price"); 
                 for(int i=0;i<pro.size();i++)
                 {
                     product res=pro.get(i);
-                    System.out.println(res.pro_id+"   "+res.name+"   "+res.price);
+                    System.out.println(res.pro_id+"         "+res.name+"     "+res.price);
                 }
             }
             else if(ch==6)
@@ -181,6 +185,7 @@ public class Main
                 System.out.println("Enter the product id");
                 id=sc.nextInt();
                 System.out.println("The details of Product id "+id+" is");
+                System.out.println("Product_id    Name   Price"); 
                 for(int i=0;i<pro.size();i++)
                 {
                     product res=pro.get(i);
