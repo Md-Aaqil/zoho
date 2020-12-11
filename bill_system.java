@@ -5,6 +5,7 @@ public class Main
     static ArrayList<customer> cus=new ArrayList<>();
     static ArrayList<product> pro=new ArrayList<>();
     static ArrayList<billdetail> bill=new ArrayList<>();
+    static ArrayList<bill> perbill=new ArrayList<>();
     static class customer
     {
         int id;
@@ -34,7 +35,11 @@ public class Main
         float amt;
         bill(int id,String date,int cid,int qty,float amt)
         {
-            
+            this.id=id;
+            this.date=date;
+            this.cus_id=cid;
+            this.tot_qty=qty;
+            this.amt=amt;
         }
     }
     static class billdetail
@@ -50,7 +55,7 @@ public class Main
             this.cus_id=cid;
             this.pro_details=prod;
         }
-        static float get_price()
+        static float get_price(int f)
         {
             price=0;
             pro_pri=new HashMap<>();
@@ -63,7 +68,8 @@ public class Main
                     if(e.getKey().equals(pro.get(i).name))
                     {
                         pp=pro.get(i).price*e.getValue();
-                        System.out.println(++cc+". "+e.getKey()+" "+pp);
+                        if(f==1)
+                            System.out.println(++cc+". "+e.getKey()+" "+pp);
                         pro_pri.put(e.getKey(),pp);
                     }
                 }
@@ -100,10 +106,19 @@ public class Main
         hp.put(pro.get(4).name,4);
         bd[0]=new billdetail(1,cus.get(0).id,hp);
         bill.add(bd[0]);
+        bill b[]=new bill[3];
+        billdetail bs=bill.get(0);
+        int tot_qty=0;
+        for(Map.Entry<String,Integer> e:bs.pro_details.entrySet())
+        {
+            tot_qty+=e.getValue();
+        }
+        b[0]=new bill(bs.id,"11-12-2020",bs.cus_id,tot_qty,bs.get_price(0));
+        perbill.add(b[0]);
         int ch=0;
         while(ch!=7)
         {
-    System.out.println("1.Customer Details\n2.Enter the customer id\n3.Overall bill\n4.Enter the bill\n5.Product Detail\n6.Get Product Details\n7.Exit");
+    System.out.println("1.Customer Details\n2.Enter the customer id\n3.Enter the bill\n4.Overall bill\n5.Product Detail\n6.Get Product Details\n7.Exit");
             System.out.println("Enter the choice:");
             ch=sc.nextInt();
             if(ch==1)
@@ -127,11 +142,15 @@ public class Main
                         System.out.println(res.id+"   "+res.name+"   "+res.phone_no);
                 }
             }
-            else if(ch==3)
-            {
-                
-            }
             else if(ch==4)
+            {
+                for(int i=0;i<perbill.size();i++)
+                {
+                    bill res=perbill.get(i);
+                    System.out.println(res.id+"   "+res.date+"   "+res.cus_id+"   "+res.tot_qty+"   "+res.amt);
+                }
+            }
+            else if(ch==3)
             {
                 for(int i=0;i<bill.size();i++)
                 {
@@ -145,7 +164,7 @@ public class Main
                             name=cus.get(i).name;
                     }
                     System.out.println("customer_name: "+name);
-                    System.out.println("Total Amount - "+bds.get_price());
+                    System.out.println("Total Amount - "+bds.get_price(1));
                 }
             }
             else if(ch==5)
