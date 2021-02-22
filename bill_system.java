@@ -87,7 +87,7 @@ public class Main
         c[1]=new customer(2,"karthi","1234554321");
         c[2]=new customer(3,"dinesh","5432112345");
         c[3]=new customer(4,"prabhu","9876556789");
-        c[4]=new customer(4,"viki","9876543210");
+        c[4]=new customer(5,"viki","9876543210");
         for(int i=0;i<5;i++)
             cus.add(c[i]);
             
